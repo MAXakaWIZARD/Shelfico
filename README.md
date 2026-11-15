@@ -36,6 +36,11 @@ npm run prod
 codecept run
 ```
 
+## Release
+```bash
+npm run release
+```
+
 ## Clear cache
 ```bash
 php bin/console cache:clear
