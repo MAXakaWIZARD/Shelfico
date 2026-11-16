@@ -2,7 +2,7 @@
     "name": "maxakawizard/shelfpico",
     "license": "MIT",
     "private": false,
-    "version": "1.2.0",
+    "version": "1.2.1",
     "dependencies": {
         "@fortawesome/fontawesome-free": "^7.1.0",
         "@popperjs/core": "^2.11.8",
