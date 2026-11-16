@@ -138,18 +138,30 @@ php bin/console doctrine:migrations:execute --down 20200115215514
 ```
 
 ### Changing DB schema
-```bash
-# 1
-# change entity mapping
-# 2
-php bin/console doctrine:migrations:diff
-# 3 
-php bin/console doctrine:migrations:migrate
-# 4
-php bin/console doctrine:cache:clear-metadata
-# 5
-# change entity form class if needed
-```
+1. Change entity mapping
+2. Generate migration
+    ```bash
+    php bin/console doctrine:migrations:diff --formatted
+    ```
+3. Migrate the DB
+    ```bash
+    php bin/console doctrine:migrations:migrate --dry-run -vvv
+   ```
+   ```bash
+    php bin/console doctrine:migrations:migrate
+    ```
+   ```bash
+   php bin/console doctrine:schema:update --force --env=test
+   ```
+4. Clear cache
+    ```bash
+    php bin/console doctrine:cache:clear-metadata
+    php bin/console cache:clear
+    php bin/console doctrine:cache:clear-metadata --env=test
+    php bin/console cache:clear --env=test
+    ```
+5. Change entity form class if needed
+6. Change corresponding form twig template if needed
 
 ### Export data
 ```bash
