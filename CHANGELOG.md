@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.3](https://github.com/MAXakaWIZARD/Shelfpico/compare/v1.2.2...v1.2.3) (2026-11-16)
+
+### Bug Fixes
+
+* update Github release action env version ([841d41b](https://github.com/MAXakaWIZARD/Shelfpico/commit/841d41b9aa07a455256766fd5b7d02824097f3ef))
+
 ## [1.2.2](https://github.com/MAXakaWIZARD/Shelfpico/compare/v1.2.1...v1.2.2) (2026-11-16)
 
 ### Bug Fixes
