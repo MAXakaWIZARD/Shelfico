@@ -34,6 +34,8 @@ jobs:
               echo "Release $TAG already exists, skipping."
               continue
             fi
+          
+            echo "Creating new release for $TAG ..."
 
             VERSION="${TAG#v}"
             NOTES=$(awk -v ver="$VERSION" '
