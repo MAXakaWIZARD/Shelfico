@@ -1,6 +1,6 @@
 {
-  "short_name": "Shelfpico",
-  "name": "Shelfpico Warehouse",
+  "short_name": "Shelfico",
+  "name": "Shelfico Warehouse",
   "icons": [
     {
       "src":"icon-32.png",
@@ -8,7 +8,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "http://shelfpico",
+  "start_url": "http://shelfico",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "display": "standalone"

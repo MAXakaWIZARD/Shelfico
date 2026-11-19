@@ -60,31 +60,31 @@ php bin/console app:env-check --env=test
 ### Web endpoint
 ```
 # Dev environment
-http://shelfpico/env-check
+http://shelfico/env-check
 
 # Test environment
-http://shelfpico-test/env-check
+http://shelfico-test/env-check
 ```
 
 ## Virtual hosts
 ```
 <VirtualHost *:80>
-    DocumentRoot "/Users/mac/Work/Web/shelfpico/public"
-    ServerName shelfpico
+    DocumentRoot "/Users/mac/Work/Web/shelfico/public"
+    ServerName shelfico
     SetEnv APP_ENV dev
     
-    <Directory "/Users/mac/Work/Web/shelfpico/public">
+    <Directory "/Users/mac/Work/Web/shelfico/public">
 	   AllowOverride All
        Require all granted
     </Directory>
 </VirtualHost>
 
 <VirtualHost *:80>
-    DocumentRoot "/Users/mac/Work/Web/shelfpico/public"
-    ServerName shelfpico-test
+    DocumentRoot "/Users/mac/Work/Web/shelfico/public"
+    ServerName shelfico-test
     SetEnv APP_ENV test
     
-    <Directory "/Users/mac/Work/Web/shelfpico/public">
+    <Directory "/Users/mac/Work/Web/shelfico/public">
 	   AllowOverride All
        Require all granted
     </Directory>

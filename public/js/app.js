@@ -9,7 +9,7 @@ import submitInNewTabDirective from './directives/submit-in-new-tab';
 import formUnloadWatcherDirective from './directives/form-unload-watcher';
 
 const app = createApp({
-    name: 'shelfpico-app'
+    name: 'shelfico-app'
 });
 
 // Register global components (needed for use in templates)
@@ -22,5 +22,5 @@ app.directive('panel-toggle', panelToggleDirective);
 app.directive('submit-in-new-tab', submitInNewTabDirective);
 app.directive('form-unload-watcher', formUnloadWatcherDirective);
 
-app.mount('#shelfpico-app');
+app.mount('#shelfico-app');
 

@@ -38,5 +38,5 @@ suites:
                 - Filesystem
             config:
                 PhpBrowser:
-                    url: 'http://shelfpico-test'
+                    url: 'http://shelfico-test'
                     timeout: 300
