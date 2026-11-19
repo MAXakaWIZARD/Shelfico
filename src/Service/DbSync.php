@@ -9,6 +9,7 @@ use App\Repo\ProductsRepo;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use InvalidArgumentException;
+use RuntimeException;
 use SplFileInfo;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableSeparator;
@@ -18,15 +19,8 @@ use Symfony\Component\Finder\Finder;
 
 class DbSync
 {
-    /**
-     * @var ParameterBagInterface
-     */
-    protected $params;
-
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
+    protected ParameterBagInterface $params;
+    protected EntityManagerInterface $em;
 
     public function __construct(ParameterBagInterface $parameters, EntityManagerInterface $em)
     {
@@ -228,8 +222,11 @@ class DbSync
         $repo = $this->em->getRepository(Product::class);
         $products = $repo->findBy([], ['title' => 'ASC']);
 
-        $file = fopen($this->params->get('paths.stocks_export') . '/stocks.txt', 'w');
-        $output = new StreamOutput($file);
+        $stockFilePath = $this->params->get('paths.stocks_export') . '/stocks.txt'; 
+        $file = @fopen($stockFilePath, 'w');
+        if (!is_resource($file)) {
+            throw new RuntimeException('Failed to open export file: ' . $stockFilePath);
+        };
 
         $table = new Table($output);
         $table->setHeaders(['SKU', 'Product', 'Qty', 'Buy', 'Lst', 'Sal']);

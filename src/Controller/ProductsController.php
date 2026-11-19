@@ -13,20 +13,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-/**
- * @SuppressWarnings(PHPMD.TooManyPublicMethods)
- */
 class ProductsController extends AbstractController
 {
-    /**
-     * @var Product
-     */
-    protected $entity;
-
-    /**
-     * @var DbSync
-     */
-    private $dbSync;
+    private ?Product $entity = null;
+    private DbSync $dbSync;
 
     public function __construct(
         DbSync $dbSync
