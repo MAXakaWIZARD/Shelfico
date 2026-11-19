@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/MAXakaWIZARD/Shelfico/compare/v1.3.0...v1.3.1) (2026-11-19)
+
+### Bug Fixes
+
+* fix project name in readme ([b5651e2](https://github.com/MAXakaWIZARD/Shelfico/commit/b5651e2c1b44f44b179ebca33d80ddd04c8e80e3))
+
 ## [1.3.0](https://github.com/MAXakaWIZARD/Shelfico/compare/v1.2.3...v1.3.0) (2026-11-19)
 
 ### Features
