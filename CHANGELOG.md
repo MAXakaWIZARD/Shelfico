@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.0](https://github.com/MAXakaWIZARD/Shelfico/compare/v1.2.3...v1.3.0) (2026-11-19)
+
+### Features
+
+* rename the project from Shelfpico to Shelfico ([f537e16](https://github.com/MAXakaWIZARD/Shelfico/commit/f537e1633a897495bdac72463587bcefbf35c4d8))
+
+### Bug Fixes
+
+* improve stocks file saving error handling ([a069bfc](https://github.com/MAXakaWIZARD/Shelfico/commit/a069bfc94d72c811c3a1f1d7388625fe59be9ca6))
+
 ## [1.2.3](https://github.com/MAXakaWIZARD/Shelfico/compare/v1.2.2...v1.2.3) (2026-11-16)
 
 ### Bug Fixes
