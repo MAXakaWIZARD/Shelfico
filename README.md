@@ -1,4 +1,4 @@
-# Shélfpico
+# Shélfico
 Homegrown tiny warehouse engine
 
 ![Shélfpico](public/images/logo.jpg)
