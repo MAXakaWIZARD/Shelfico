@@ -7,10 +7,11 @@ Homegrown tiny warehouse engine
 ![Dashboard](public/images/dashboard.jpg)
 
 ## Features
-* products
+* products (with tags)
 * restocks
 * orders
 * clients
+* total profit dashboard
 * db backup/restore
 
 ## Env
