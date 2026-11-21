@@ -68,7 +68,7 @@
             </td>
         </tr>
         <tr>
-            <td>{{ lang == 'UA' ? 'Сума до сплати, грн' : 'Total, UAH' }}</td>
+            <td>{{ lang == 'UA' ? 'Сума до сплати, ' : 'Total, ' }}{{ get_setting(constant('App\\Service\\Settings::CURRENCY_CODE3')) }}</td>
             <td class="text-right pr-20">
                 {{ data.totalAmount | format_price }}
             </td>

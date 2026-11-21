@@ -21,11 +21,16 @@ class DbSync
 {
     protected ParameterBagInterface $params;
     protected EntityManagerInterface $em;
+    protected Warehouse $warehouse;
 
-    public function __construct(ParameterBagInterface $parameters, EntityManagerInterface $em)
-    {
+    public function __construct(
+        ParameterBagInterface $parameters, 
+        EntityManagerInterface $em,
+        Warehouse $warehouse
+    ) {
         $this->params = $parameters;
         $this->em = $em;
+        $this->warehouse = $warehouse;
     }
 
     public function getExportCmd(
@@ -247,7 +252,7 @@ class DbSync
                 $product->getSku(),
                 $product->getTitle(),
                 (int) $product->getQuantity(),
-                (int) $product->getBuyPrice(),
+                (int) $this->warehouse->calcBuyPrice($product),
                 (int) $product->getLastBuyPrice(),
                 (int) $product->getSalePrice(),
             ]);

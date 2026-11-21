@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Extra\HasTags;
 use App\Repo\ProductsRepo;
+use App\Service\Settings;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -194,33 +195,15 @@ class Product
         $this->supplierSalePrice = $supplierSalePrice;
         return $this;
     }
-
-    protected function getCommissionRatio(): float
-    {
-        return (100 + (int) SETTING_PAYMENT_COMISSION_PERCENT) / 100;
-    }
-
-    protected function getSupplierDiscountRatio(): float
-    {
-        return (100 - (int) SETTING_SUPPLIER_DISCOUNT_PERCENT) / 100;
-    }
-
+    
     public function getBuyPrice(): string
     {
-        return $this->getSupplierSalePrice()
-            * $this->getSupplierDiscountRatio()
-            * $this->getCommissionRatio()
-            + SETTING_ITEM_DELIVERY_PRICE;
+        return '';
     }
 
     public function getSalePrice(): string
     {
         return $this->getSupplierSalePrice();
-    }
-
-    public function getProfit(): int
-    {
-        return $this->getSalePrice() - $this->getBuyPrice();
     }
 
     public function setPopular(bool $popular): self

@@ -6,6 +6,8 @@ namespace App\Twig;
 
 use App\Entity\Product;
 use App\Entity\Tag;
+use App\Service\Settings;
+use App\Service\Warehouse;
 use App\Utils;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -17,34 +19,22 @@ use Twig\TwigFunction;
 
 class AppExtension extends AbstractExtension
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
-
-    /**
-     * @var array
-     */
-    protected $tags;
-
-    /**
-     * @var Environment
-     */
-    private $twig;
-
-    /**
-     * @var ParameterBagInterface
-     */
-    private $parameterBag;
+    private EntityManagerInterface $em;
+    private array $tags = [];
+    private ParameterBagInterface $parameterBag;
+    private Settings $settings;
+    private Warehouse $warehouse;
 
     public function __construct(
-        Environment $twig,
         EntityManagerInterface $em,
-        ParameterBagInterface $parameterBag
+        ParameterBagInterface $parameterBag,
+        Settings $settings,
+        Warehouse $warehouse
     ) {
         $this->em = $em;
-        $this->twig = $twig;
         $this->parameterBag = $parameterBag;
+        $this->settings = $settings;
+        $this->warehouse = $warehouse;
     }
 
     public function getFunctions(): array
@@ -70,6 +60,21 @@ class AppExtension extends AbstractExtension
                 function (Process $process) {
                     return Utils::getHtmlFriendlyProcessOutput($process);
                 },
+                ['is_safe' => ['html']]
+            ),
+            new TwigFunction(
+                'get_setting',
+                [$this, 'getSetting'],
+                ['is_safe' => ['html']]
+            ),
+            new TwigFunction(
+                'calc_profit',
+                [$this, 'calcProfit'],
+                ['is_safe' => ['html']]
+            ),
+            new TwigFunction(
+                'calc_buy_price',
+                [$this, 'calcBuyPrice'],
                 ['is_safe' => ['html']]
             ),
         ];
@@ -125,6 +130,21 @@ class AppExtension extends AbstractExtension
         }
 
         return null;
+    }
+    
+    public function getSetting(string $name, mixed $defaultValue = null): mixed
+    {
+        return $this->settings->get($name, $defaultValue);
+    }
+    
+    public function calcProfit(Product $product): float
+    {
+        return $this->warehouse->calcProfit($product);
+    }
+    
+    public function calcBuyPrice(Product $product): float
+    {
+        return $this->warehouse->calcBuyPrice($product);
     }
 
     public function getName(): string

@@ -53,9 +53,9 @@
                     </a>
                 </td>
                 <td class="text-right">{{ product.lastBuyPrice > 0 ? product.lastBuyPrice|format_price : 'N/A' }}</td>
-                <td class="text-right">{{ product.buyPrice|format_price }}</td>
+                <td class="text-right">{{ calc_buy_price(product)|format_price }}</td>
                 <td class="text-right">{{ product.salePrice|format_price }}</td>
-                <td class="text-right">{{ (product.profit)|format_price }}</td>
+                <td class="text-right">{{ calc_profit(product)|format_price }}</td>
                 <td>
                     <a class="btn p-0" href="{{ product.url }}" target="_blank" title="{{ product.url }}">
                         <span class="fa fa-link"></span>

@@ -13,28 +13,26 @@ use App\Repo\OrdersRepo;
 use App\Repo\ProductsRepo;
 use App\Repo\RestocksRepo;
 use App\Service\DbSync;
+use App\Service\Warehouse;
 use App\Utils\EnvChecker;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class IndexController extends AbstractController
 {
-    /**
-     * @var DbSync
-     */
-    private $dbSync;
+    private DbSync $dbSync;
+    private EnvChecker $envChecker;
+    private Warehouse $warehouse;
 
-    /**
-     * @var EnvChecker
-     */
-    private $envChecker;
 
     public function __construct(
         DbSync $dbSync,
-        EnvChecker $envChecker
+        EnvChecker $envChecker,
+        Warehouse $warehouse
     ) {
         $this->dbSync = $dbSync;
         $this->envChecker = $envChecker;
+        $this->warehouse = $warehouse;
     }
 
     #[Route("/", name: "home")]
@@ -66,7 +64,7 @@ class IndexController extends AbstractController
             'currentDbVersion' => $currentDbVersion,
             'totalProfit' => $ordersRepo->getTotalProfit(),
             'inStockSalePrice' => $productsRepo->getSalePrice($products),
-            'inStockBuyPrice' => $productsRepo->getBuyPrice($products),
+            'inStockBuyPrice' => $this->warehouse->calcTotalBuyPrice($products),
             'totalSpentAmount' => $restocksRepo->getTotalSpentAmount(),
             'totalReceivedAmount' => $ordersRepo->getTotalSpentAmount(),
             'products' => $products,

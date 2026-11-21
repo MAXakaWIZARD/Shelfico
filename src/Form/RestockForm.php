@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Form;
 
-use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\Restock;
+use App\Service\Settings;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -26,6 +26,8 @@ class RestockForm extends AbstractForm implements FormTypeInterface
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
+        
+        $currencySymbol = $this->settings->get(Settings::CURRENCY_SYMBOL);
 
         $builder
             ->add('id', HiddenType::class, [
@@ -56,11 +58,11 @@ class RestockForm extends AbstractForm implements FormTypeInterface
                         ->orderBy('m.title', 'ASC')
                     ;
                 },
-                'choice_label' => function (Product $product) {
+                'choice_label' => function (Product $product) use ($currencySymbol) {
                     return $product->getTitle()
                         . ' ' . $product->getSku()
-                        . ' / ₴' . (int) $product->getBuyPrice()
-                        . ' / ₴' . (int) $product->getSalePrice();
+                        . " / $currencySymbol" . (int) $this->warehouse->calcBuyPrice($product)
+                        . " / $currencySymbol" . (int) $product->getSalePrice();
                 },
                 'label' => ' ',
                 'required' => true,

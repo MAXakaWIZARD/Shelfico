@@ -6,6 +6,7 @@ namespace App\Form;
 
 use App\Entity\Product;
 use App\Form\Traits\Taggable;
+use App\Service\Settings;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -73,7 +74,7 @@ class ProductForm extends AbstractForm implements FormTypeInterface
                     'class' => 'form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'input-group-text fas fa-hryvnia',
+                    'class' => 'input-group-text fas ' . $this->settings->get(Settings::CURRENCY_ICON_CLASS),
                     'title' => 'Sale price',
                 ],
             ])

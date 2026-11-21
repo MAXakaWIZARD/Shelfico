@@ -7,6 +7,7 @@ namespace App\Form;
 use App\Entity\Customer;
 use App\Entity\Order;
 use App\Entity\Product;
+use App\Service\Settings;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -27,6 +28,8 @@ class OrderForm extends AbstractForm implements FormTypeInterface
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
+        
+        $currencySymbol = $this->settings->get(Settings::CURRENCY_SYMBOL);
 
         $builder
             ->add('id', HiddenType::class, [
@@ -77,13 +80,13 @@ class OrderForm extends AbstractForm implements FormTypeInterface
                         ->orderBy('m.title', 'ASC')
                     ;
                 },
-                'choice_label' => function (Product $product) {
+                'choice_label' => function (Product $product) use ($currencySymbol) {
                     return $product->getTitle()
                         . ' ' . $product->getSku()
                         . ' / ' . $product->getQuantity() . 'pcs'
-                        . ' / ₴' . (int) $product->getLastBuyPrice()
-                        . ' / ₴' . (int) $product->getBuyPrice()
-                        . ' / ₴' . (int) $product->getSalePrice();
+                        . " / $currencySymbol" . (int) $product->getLastBuyPrice()
+                        . " / $currencySymbol" . (int) $this->warehouse->calcBuyPrice($product)
+                        . " / $currencySymbol" . (int) $product->getSalePrice();
                 },
                 'label' => ' ',
                 'required' => true,

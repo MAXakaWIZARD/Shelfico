@@ -62,8 +62,8 @@
                 </div>
                 <div class="col-md-2">
                     {% if product.salePrice > 0 %}
-                        Buy: {{ product.buyPrice|format_price }}<br/>
-                        Profit: {{ product.profit|format_price }}
+                        Buy: {{ calc_buy_price(product)|format_price }}<br/>
+                        Profit: {{ calc_profit(product)|format_price }}
                     {% endif %}
                 </div>
                 <div class="col-md-3">

@@ -92,19 +92,6 @@ class ProductsRepo extends EntityRepo
     }
 
     /**
-     * @param Product[] $products
-     */
-    public function getBuyPrice(array $products): float
-    {
-        $price = 0;
-        foreach ($products as $product) {
-            $price += $product->getQuantity() * $product->getBuyPrice();
-        }
-
-        return $price;
-    }
-
-    /**
      * @return Product[]
      */
     public function searchByTerm(string $term): array
