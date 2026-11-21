@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.0](https://github.com/MAXakaWIZARD/Shelfico/compare/v1.3.1...v1.4.0) (2026-11-21)
+
+### Features
+
+* add missing DB migrations ([34a18cb](https://github.com/MAXakaWIZARD/Shelfico/commit/34a18cb646a9f719c233bac1a343e9faa7f846b1))
+* introduce Settings service with explicitly defined default values ([d6d5cc6](https://github.com/MAXakaWIZARD/Shelfico/commit/d6d5cc6f430eeddbb197745b841d9731515c570b))
+* introduce Warehouse service with extracted profit and buy price calculation logic ([baa6d79](https://github.com/MAXakaWIZARD/Shelfico/commit/baa6d7925d4b9f658277e90a2a457216cdb855bd))
+* refactor the codebase to use Settings and Warehouse services, remove constant-based settings ([4229fc9](https://github.com/MAXakaWIZARD/Shelfico/commit/4229fc9cebb877a32dc8869e892185aa16ee5467))
+* rename price fields to exclude currency suffix ([43843d2](https://github.com/MAXakaWIZARD/Shelfico/commit/43843d2c26a172e89042d00a8e8097bc5ef55b2f))
+
+### Bug Fixes
+
+* enable strict types on all entities ([8b912d2](https://github.com/MAXakaWIZARD/Shelfico/commit/8b912d24be840e0f77654674ab212ecb157b73d4))
+* fix stocks file saving ([e6c0252](https://github.com/MAXakaWIZARD/Shelfico/commit/e6c02527c78b8825b78f35f59226bbee29c81eb6))
+
 ## [1.3.1](https://github.com/MAXakaWIZARD/Shelfico/compare/v1.3.0...v1.3.1) (2026-11-19)
 
 ### Bug Fixes
