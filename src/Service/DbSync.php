@@ -227,6 +227,8 @@ class DbSync
         if (!is_resource($file)) {
             throw new RuntimeException('Failed to open export file: ' . $stockFilePath);
         };
+        
+        $output = new StreamOutput($file);
 
         $table = new Table($output);
         $table->setHeaders(['SKU', 'Product', 'Qty', 'Buy', 'Lst', 'Sal']);
