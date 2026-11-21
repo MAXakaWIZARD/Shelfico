@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repo\OrdersRepo;
@@ -157,7 +159,7 @@ class Order
         return $this;
     }
 
-    public function getAmount(): string
+    public function getAmount(): float
     {
         return $this->getPrice() * $this->getQuantity();
     }

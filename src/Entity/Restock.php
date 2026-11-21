@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repo\RestocksRepo;
@@ -119,7 +121,7 @@ class Restock
         return $this;
     }
 
-    public function getAmount(): string
+    public function getAmount(): float
     {
         return $this->getPrice() * $this->getQuantity();
     }
