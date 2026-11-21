@@ -81,9 +81,9 @@ class OrderForm extends AbstractForm implements FormTypeInterface
                     return $product->getTitle()
                         . ' ' . $product->getSku()
                         . ' / ' . $product->getQuantity() . 'pcs'
-                        . ' / ₴' . (int) $product->getLastBuyPriceUah()
-                        . ' / ₴' . (int) $product->getBuyPriceUah()
-                        . ' / ₴' . (int) $product->getSalePriceUah();
+                        . ' / ₴' . (int) $product->getLastBuyPrice()
+                        . ' / ₴' . (int) $product->getBuyPrice()
+                        . ' / ₴' . (int) $product->getSalePrice();
                 },
                 'label' => ' ',
                 'required' => true,

@@ -63,7 +63,7 @@ class ProductForm extends AbstractForm implements FormTypeInterface
                     'title' => 'SKU',
                 ],
             ])
-            ->add('supplierSalePriceUah', IntegerType::class, [
+            ->add('supplierSalePrice', IntegerType::class, [
                 'label' => ' ',
                 'required' => true,
                 'constraints' => [

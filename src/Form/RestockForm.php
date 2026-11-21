@@ -59,8 +59,8 @@ class RestockForm extends AbstractForm implements FormTypeInterface
                 'choice_label' => function (Product $product) {
                     return $product->getTitle()
                         . ' ' . $product->getSku()
-                        . ' / ₴' . (int) $product->getBuyPriceUah()
-                        . ' / ₴' . (int) $product->getSalePriceUah();
+                        . ' / ₴' . (int) $product->getBuyPrice()
+                        . ' / ₴' . (int) $product->getSalePrice();
                 },
                 'label' => ' ',
                 'required' => true,

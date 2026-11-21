@@ -81,11 +81,11 @@ class ProductsRepo extends EntityRepo
     /**
      * @param Product[] $products
      */
-    public function getSalePriceUah(array $products): float
+    public function getSalePrice(array $products): float
     {
         $price = 0;
         foreach ($products as $product) {
-            $price += $product->getQuantity() * $product->getSalePriceUah();
+            $price += $product->getQuantity() * $product->getSalePrice();
         }
 
         return $price;
@@ -94,11 +94,11 @@ class ProductsRepo extends EntityRepo
     /**
      * @param Product[] $products
      */
-    public function getBuyPriceUah(array $products): float
+    public function getBuyPrice(array $products): float
     {
         $price = 0;
         foreach ($products as $product) {
-            $price += $product->getQuantity() * $product->getBuyPriceUah();
+            $price += $product->getQuantity() * $product->getBuyPrice();
         }
 
         return $price;
@@ -154,7 +154,7 @@ class ProductsRepo extends EntityRepo
 
             $product->setQuantity($restockedQty - $shippedQty);
             $product->setTotalSoldQuantity($soldQty);
-            $product->setLastBuyPriceUah((string) intval($restocksRepo->getLastBuyPriceUah($product)));
+            $product->setLastBuyPrice((string) intval($restocksRepo->getLastBuyPrice($product)));
         }
 
         $em->flush();

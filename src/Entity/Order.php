@@ -27,10 +27,10 @@ class Order
     #[ORM\JoinColumn(name: "product_id", referencedColumnName: "id", nullable: false, onDelete: "CASCADE")]
     protected $product;
 
-    #[ORM\Column(type: "decimal", precision: 20, scale: 2, options: ["comment" => "Price, UAH"])]
+    #[ORM\Column(type: "decimal", precision: 20, scale: 2, options: ["comment" => "Price"])]
     protected $price = '';
 
-    #[ORM\Column(type: "decimal", precision: 20, scale: 2, options: ["comment" => "Profit, UAH"])]
+    #[ORM\Column(type: "decimal", precision: 20, scale: 2, options: ["comment" => "Profit"])]
     protected $profit = '';
 
     #[ORM\Column(type: "string", length: 255)]

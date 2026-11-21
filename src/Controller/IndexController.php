@@ -65,8 +65,8 @@ class IndexController extends AbstractController
         return $this->render('index/index.twig', [
             'currentDbVersion' => $currentDbVersion,
             'totalProfit' => $ordersRepo->getTotalProfit(),
-            'inStockSalePrice' => $productsRepo->getSalePriceUah($products),
-            'inStockBuyPrice' => $productsRepo->getBuyPriceUah($products),
+            'inStockSalePrice' => $productsRepo->getSalePrice($products),
+            'inStockBuyPrice' => $productsRepo->getBuyPrice($products),
             'totalSpentAmount' => $restocksRepo->getTotalSpentAmount(),
             'totalReceivedAmount' => $ordersRepo->getTotalSpentAmount(),
             'products' => $products,

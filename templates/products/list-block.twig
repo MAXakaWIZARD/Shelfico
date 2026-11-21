@@ -52,10 +52,10 @@
                         {{ product.totalSoldQuantity }}
                     </a>
                 </td>
-                <td class="text-right">{{ product.lastBuyPriceUah > 0 ? product.lastBuyPriceUah|format_price : 'N/A' }}</td>
-                <td class="text-right">{{ product.buyPriceUah|format_price }}</td>
-                <td class="text-right">{{ product.salePriceUah|format_price }}</td>
-                <td class="text-right">{{ (product.profitUah)|format_price }}</td>
+                <td class="text-right">{{ product.lastBuyPrice > 0 ? product.lastBuyPrice|format_price : 'N/A' }}</td>
+                <td class="text-right">{{ product.buyPrice|format_price }}</td>
+                <td class="text-right">{{ product.salePrice|format_price }}</td>
+                <td class="text-right">{{ (product.profit)|format_price }}</td>
                 <td>
                     <a class="btn p-0" href="{{ product.url }}" target="_blank" title="{{ product.url }}">
                         <span class="fa fa-link"></span>

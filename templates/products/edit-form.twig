@@ -61,15 +61,15 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    {% if product.salePriceUah > 0 %}
-                        Buy: {{ product.buyPriceUah|format_price }}<br/>
-                        Profit: {{ product.profitUah|format_price }}
+                    {% if product.salePrice > 0 %}
+                        Buy: {{ product.buyPrice|format_price }}<br/>
+                        Profit: {{ product.profit|format_price }}
                     {% endif %}
                 </div>
                 <div class="col-md-3">
                     <div class="input-group">
-                        {{ form_label(form.supplierSalePriceUah) }}
-                        {{ form_widget(form.supplierSalePriceUah) }}
+                        {{ form_label(form.supplierSalePrice) }}
+                        {{ form_widget(form.supplierSalePrice) }}
                     </div>
                 </div>
             </div>

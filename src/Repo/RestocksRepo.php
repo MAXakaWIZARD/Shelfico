@@ -38,7 +38,7 @@ class RestocksRepo extends EntityRepo
         return (int) $query->getSingleResult()['amount'];
     }
 
-    public function getLastBuyPriceUah(Product $product): string
+    public function getLastBuyPrice(Product $product): string
     {
         $rsm = new ResultSetMapping();
         $rsm->addScalarResult('price', 'price', 'decimal');

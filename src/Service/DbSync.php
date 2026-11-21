@@ -247,9 +247,9 @@ class DbSync
                 $product->getSku(),
                 $product->getTitle(),
                 (int) $product->getQuantity(),
-                (int) $product->getBuyPriceUah(),
-                (int) $product->getLastBuyPriceUah(),
-                (int) $product->getSalePriceUah(),
+                (int) $product->getBuyPrice(),
+                (int) $product->getLastBuyPrice(),
+                (int) $product->getSalePrice(),
             ]);
         }
 

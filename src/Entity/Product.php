@@ -53,29 +53,29 @@ class Product
     protected $totalSoldQuantity = 0;
 
     /**
-     * Last buy price, UAH
+     * Last buy price
      * Calculated from restocks
      */
     #[ORM\Column(
         type: "decimal",
-        name: "last_buy_price_uah",
+        name: "last_buy_price",
         precision: 20,
         scale: 2,
-        options: ["comment" => "Last buy price, UAH"]
+        options: ["comment" => "Last buy price"]
     )]
-    protected $lastBuyPriceUah = '';
+    protected $lastBuyPrice = '';
 
     /**
-     * Supplier sale price, UAH
+     * Supplier sale price
      */
     #[ORM\Column(
         type: "decimal",
-        name: "supplier_sale_price_uah",
+        name: "supplier_sale_price",
         precision: 20,
         scale: 2,
-        options: ["comment" => "Supplier sale price, UAH"]
+        options: ["comment" => "Supplier sale price"]
     )]
-    protected $supplierSalePriceUah = '';
+    protected $supplierSalePrice = '';
 
     #[ORM\Column(type: "boolean", options: ["default" => false])]
     protected $popular = false;
@@ -92,8 +92,8 @@ class Product
     {
         $this->setCreatedAt(new DateTime());
         $this->setTags(new ArrayCollection());
-        $this->setLastBuyPriceUah('0');
-        $this->setSupplierSalePriceUah('0');
+        $this->setLastBuyPrice('0');
+        $this->setSupplierSalePrice('0');
     }
 
     public function getId()
@@ -173,25 +173,25 @@ class Product
         return $this;
     }
 
-    public function getLastBuyPriceUah(): string
+    public function getLastBuyPrice(): string
     {
-        return $this->lastBuyPriceUah;
+        return $this->lastBuyPrice;
     }
 
-    public function setLastBuyPriceUah(string $lastBuyPriceUah): self
+    public function setLastBuyPrice(string $lastBuyPrice): self
     {
-        $this->lastBuyPriceUah = $lastBuyPriceUah;
+        $this->lastBuyPrice = $lastBuyPrice;
         return $this;
     }
 
-    public function getSupplierSalePriceUah(): string
+    public function getSupplierSalePrice(): string
     {
-        return $this->supplierSalePriceUah;
+        return $this->supplierSalePrice;
     }
 
-    public function setSupplierSalePriceUah(string $supplierSalePrice): self
+    public function setSupplierSalePrice(string $supplierSalePrice): self
     {
-        $this->supplierSalePriceUah = $supplierSalePrice;
+        $this->supplierSalePrice = $supplierSalePrice;
         return $this;
     }
 
@@ -205,22 +205,22 @@ class Product
         return (100 - (int) SETTING_SUPPLIER_DISCOUNT_PERCENT) / 100;
     }
 
-    public function getBuyPriceUah(): string
+    public function getBuyPrice(): string
     {
-        return $this->getSupplierSalePriceUah()
+        return $this->getSupplierSalePrice()
             * $this->getSupplierDiscountRatio()
             * $this->getCommissionRatio()
-            + SETTING_ITEM_DELIVERY_PRICE_UAH;
+            + SETTING_ITEM_DELIVERY_PRICE;
     }
 
-    public function getSalePriceUah(): string
+    public function getSalePrice(): string
     {
-        return $this->getSupplierSalePriceUah();
+        return $this->getSupplierSalePrice();
     }
 
-    public function getProfitUah(): int
+    public function getProfit(): int
     {
-        return $this->getSalePriceUah() - $this->getBuyPriceUah();
+        return $this->getSalePrice() - $this->getBuyPrice();
     }
 
     public function setPopular(bool $popular): self
